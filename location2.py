@@ -17,7 +17,7 @@ def grabInfo(url):
         if loot is not None:
             loot = loot.findAllNext()[3].getText().strip().split('\n')
             for i, v in enumerate(loot):
-                loot[i] = ':: ' + v
+                loot[i] = ':: ' + v.lstrip()
             return '\n'.join(loot)
         else:
             return None
