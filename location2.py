@@ -39,4 +39,4 @@ if __name__ == "__main__":
                 else:
                     print('There is no notable loot here')
                 cache.add(cells[location])
-        time.sleep(5)
+        time.sleep(3)
