@@ -26,7 +26,7 @@ def grabInfo(url):
 
 
 if __name__ == "__main__":
-    cache = []
+    cache = [None]
     while True:
         #IF YOU GOT THIS FILE FROM MY GITHUB YOU NEED TO REPLACE "MYNAME" WITH YOUR COMPUTER USERNAME
         with open(r'C:\Users\MyName\Documents\My Games\Fallout4\Logs\Script\Papyrus.0.log') as f:
