@@ -5,7 +5,7 @@ import requests
 import time
 
 
-with open(r'C:\Users\Peter\Documents\Python\Fallout 4\cells.json') as f:
+with open('cells.json') as f:
     cells = json.load(f)
 cache = set()
 rxloc = re.compile(r'\[Cell <(\w+?) \([0-9A-F]{8}\)>\]')
@@ -28,7 +28,8 @@ def grabInfo(url):
 
 if __name__ == "__main__":
     while True:
-        with open(r'C:\Users\Peter\Documents\My Games\Fallout4\Logs\Script\Papyrus.0.log') as f:
+        #IF YOU GOT THIS FILE FROM MY GITHUB YOU NEED TO REPLACE "MYNAME" WITH YOUR COMPUTER USERNAME
+        with open(r'C:\Users\MyName\Documents\My Games\Fallout4\Logs\Script\Papyrus.0.log') as f:
             location = rxloc.findall(f.read())[-1]
             if location in cells and cells[location] not in cache:
                 print(f'\n\n\033[96m{location}\033[0m')
