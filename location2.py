@@ -43,7 +43,6 @@ def followLog(logfile):
         yield line
 
 
-
 if __name__ == "__main__":
     mostrecent = None
     home = os.path.expanduser('~')
