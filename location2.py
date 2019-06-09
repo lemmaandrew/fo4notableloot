@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import json
+import os
 import re
 import requests
 import time
@@ -28,8 +29,8 @@ def grabInfo(url):
 if __name__ == "__main__":
     cache = [None]
     while True:
-        #IF YOU GOT THIS FILE FROM MY GITHUB YOU NEED TO REPLACE "MYNAME" WITH YOUR COMPUTER USERNAME
-        with open(r'C:\Users\MyName\Documents\My Games\Fallout4\Logs\Script\Papyrus.0.log') as f:
+        home = os.path.expanduser('~')
+        with open(os.path.join(home, 'Documents\\My Games\\Fallout4\\Logs\\Script\\Papyrus.0.log')) as f:
             location = rxloc.findall(f.read())[-1]
             if location in cells and cells[location] != cache[-1]:
                 print(f'\n\n\033[96m{location}\033[0m')
