@@ -8,7 +8,6 @@ import time
 
 with open('.\\cells.json') as f:
     cells = json.load(f)
-rxloc = re.compile(r'\[Cell <(\w+?) \([0-9A-F]{8}\)>\]')
 
 
 def grabInfo(url):
