@@ -32,7 +32,10 @@ if __name__ == "__main__":
                 location = re.search(r'\[Cell <(.+?) \(', line)[1]
             except TypeError:
                 continue
-            loot = cells[location]
+            try:
+                loot = cells[location]
+            except KeyError:
+                continue
             if location in cells and loot != mostrecent:
                 print(f'\n\n\033[96m{location}\033[0m')
                 if loot is not None:
