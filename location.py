@@ -1,8 +1,6 @@
-from bs4 import BeautifulSoup
 import json
 import os
 import re
-import requests
 import time
 
 #C:\Users\Peter\Documents\Python\Fallout 4
