@@ -6,7 +6,6 @@ import time
 #C:\Users\Peter\Documents\Python\Fallout 4
 with open('.\\cells.json') as f:
     cells = json.load(f)
-rxloc = re.compile(r'\[Cell <(\w+?) \([0-9A-F]{8}\)>\]')
 
 
 def followLog(logfile):
