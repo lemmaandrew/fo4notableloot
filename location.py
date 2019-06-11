@@ -3,7 +3,7 @@ import os
 import re
 import time
 
-#C:\Users\Peter\Documents\Python\Fallout 4
+
 with open('.\\cells.json') as f:
     cells = json.load(f)
 
