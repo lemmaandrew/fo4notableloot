@@ -1,42 +1,49 @@
+"""While Fallout 4 is running, checks the logs for location updates,
+and prints the relevant text into the terminal
+"""
 import json
 import os
 import re
 import time
 
 
-with open('.\\cells.json') as f:
-    cells = json.load(f)
+with open('.\\cellloot.json') as f:
+    LOOT = json.load(f)
+with open('.\\cellnames.json') as f:
+    NAMES = json.load(f)
 
 
-def followLog(logfile):
-    """tails the file, blatently stolen from https://github.com/dabeaz/generators/blob/master/examples/follow.py
-    used so I don't have to read the entire file each time
-    yields end line
+def follow_log(logfile):
+    """Tails the file
+
+    Blatently stolen from https://github.com/dabeaz/generators/blob/master/examples/follow.py
+
+    Yields
+    ------
+    str
+        end line of file
     """
     logfile.seek(0, os.SEEK_END)
     while True:
-        line = logfile.readline()
-        if not line:
+        currentline = logfile.readline()
+        if not currentline:
             time.sleep(0.1)
             continue
-        yield line
+        yield currentline
 
 
 if __name__ == "__main__":
     mostrecent = None
-    home = os.path.expanduser('~')
-    with open(os.path.join(home, 'Documents\\My Games\\Fallout4\\Logs\\Script\\Papyrus.0.log')) as f:
-        for line in followLog(f):
+    with open(os.path.expanduser('~\\Documents\\My Games\\Fallout4\\Logs\\Script\\Papyrus.0.log')) as f:
+        for line in follow_log(f):
             try:
                 location = re.search(r'\[Cell <(.+?) \(', line)[1]
-            except TypeError:
+                loot = LOOT[location]
+                name = NAMES[location]
+            except (TypeError, KeyError):
                 continue
-            try:
-                loot = cells[location]
-            except KeyError:
-                continue
-            if location in cells and loot != mostrecent:
-                print(f'\n\n\033[96m{location}\033[0m')
+            if loot != mostrecent:
+                print(f'\n\n\033[96m{name}\033[0m')
                 if loot is not None:
                     print(loot)
                 else:
